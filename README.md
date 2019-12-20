@@ -14,12 +14,13 @@
 3 - Set up a .env file with contents like this:
 
 ```
-export INFURA_KEY="36d4a18aa0f9482f9fef5bb1f56c6e01"
+export INFURA_KEY="63a4a18cc0f1234f9fef5cc1f56c6e01"
 export MNEMONIC="bla bla bla bla your meta mask seed phrase here"
+export USER_ADDRESS="0xab5801a7d398351b8be11c439e05c5b3259aec9b"
 export NETWORK="mainnet"
 ```
 
-4 - Run `nvm use 8.11.2`.  You might need to install nvm.  Can't recall if it comes with node.
+4 - Run `nvm use 8.11.2`.  You might need to install nvm first.
 
 5 - Run `npm install`
 
