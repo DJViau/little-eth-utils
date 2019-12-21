@@ -7,10 +7,6 @@
 
 2 - Open up the terminal and navigate to the folder. (Something like `cd ~/Desktop/little-eth-utils/` will be the command for this).
 
->2a - You might have to install some stuff like npm and node before this command will work.  In fact, you might even have to install git before you can clone the repo.
-
->2b -Get Homebrew (type `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` into the command line and press enter). Then, to install node and npm, type `brew update` into the terminal and press enter.  Then, type `brew install node` into the terminal and press enter.  If everything goes well, you'll have all the fundamental tools.
-
 3 - Set up a .env file with contents like this:
 
 ```
@@ -22,8 +18,13 @@ export NETWORK="mainnet"
 
 4 - Run `nvm use 8.11.2`.  You might need to install nvm first.
 
+>4a You might have to install some stuff like npm and node before this will work.
+
+>2b Get Homebrew (type `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` into the command line and press enter). To install node and npm, type `brew update` into the terminal and press enter, then type `brew install node` into the terminal and press enter.  If everything goes well, you'll have all the fundamental tools.
+
 5 - Run `npm install`
 
+This will take a little while to run.  It's OK if you get warnings, but if you get errors, you should ask someone about them.
 
 
 # How to use
