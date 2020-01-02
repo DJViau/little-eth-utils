@@ -53,3 +53,11 @@ Example command: `node clear-blocked.js 2434 15`
 Expected output: `SENT https://etherscan.io/tx/<transaction_hash>`
 
 Then go to the link that gets logged to verify that the replacement transaction has been mined.  The original stuck transaction should show that it was dropped and replaced.
+
+
+## Minting a creature to a user
+
+Source your .env file by entering `. .env`
+
+Type `node mint-to-address.js <recipient_address>`
+
