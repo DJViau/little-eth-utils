@@ -41,6 +41,8 @@ Expected output: https://www.cryptovoxels.com/p/20
 
 Then go to the link that gets logged to see the asset's metadata.
 
+Use `alias l='cd ~/Desktop/stuff/little-eth-utils; source .env; node log-token-uri.js'` in your bash profile for extra convenience.  Then, you can just open a terminal window, type `l <address> <id>` and press enter.
+
 
 ## Clearing a blocked transaction
 
@@ -61,3 +63,6 @@ Source your .env file by entering `. .env`
 
 Type `node mint-to-address.js <recipient_address>`
 
+Expected output: `Minted creature. Transaction: https://etherscan.io/tx/<transaction_hash>`
+
+Use `alias send='cd ~/Desktop/stuff/little-eth-utils; source .env; node mint-to-address.js'` in your bash profile for extra convenience.  Then, you can just open a terminal window, type `send <address>` and press enter.
