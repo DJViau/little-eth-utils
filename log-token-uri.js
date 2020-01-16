@@ -30,6 +30,36 @@ const NFT_ABI = [{
     "payable": false,
     "stateMutability": "view",
     "type": "function"
+},
+{
+    "constant": true,
+    "inputs": [
+    ],
+    "name": "symbol",
+    "outputs": [
+        {
+            "name": "",
+            "type": "string"
+        }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+},
+{
+    "constant": true,
+    "inputs": [
+    ],
+    "name": "name",
+    "outputs": [
+        {
+            "name": "",
+            "type": "string"
+        }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
 }]
 
 
@@ -43,6 +73,14 @@ async function main() {
         const nftContract = new web3Instance.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS, { gasLimit: "1000000" })
         // const result = await nftContract.methods.tokenURI(TOKEN_ID)
         await nftContract.methods.tokenURI(TOKEN_ID).call({})
+            .then((result) => {
+                console.log(result)
+            });
+        await nftContract.methods.symbol().call({})
+            .then((result) => {
+                console.log(result)
+            });
+        await nftContract.methods.name().call({})
             .then((result) => {
                 console.log(result)
             });

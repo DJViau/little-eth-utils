@@ -8,8 +8,8 @@ const NETWORK = process.env.NETWORK
 const NUM_CREATURES = 1
 
 const RECIPIENT_ADDRESS = process.argv[2]
-// const numCreaturesToSend = process.argv[3] || NUM_CREATURES
-const numCreaturesToSend = 1
+const numCreaturesToSend = process.argv[3] || NUM_CREATURES
+// const numCreaturesToSend = 1
 
 if (!MNEMONIC || !INFURA_KEY || !RECIPIENT_ADDRESS || !USER_ADDRESS || !NETWORK) {
     console.error("Please set a mnemonic, infura key, recipient, user, network, and contract address.")
@@ -41,7 +41,7 @@ async function main() {
         const nftContract = new web3Instance.eth.Contract(NFT_ABI, BEST_CREATURE_ADDRESS, { gasLimit: "1000000" })
 
         // Creatures issued directly to the recipient.
-        if (numCreaturesToSend < 1 || numCreaturesToSend > 5) {
+        if (numCreaturesToSend < 1 || numCreaturesToSend > 10) {
             return
         }
         for (var i = 0; i < numCreaturesToSend; i++) {
