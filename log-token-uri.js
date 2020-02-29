@@ -74,15 +74,15 @@ async function main() {
         // const result = await nftContract.methods.tokenURI(TOKEN_ID)
         await nftContract.methods.tokenURI(TOKEN_ID).call({})
             .then((result) => {
-                console.log(result)
+                console.log('tokenURI:', result)
             });
         await nftContract.methods.symbol().call({})
             .then((result) => {
-                console.log(result)
+                console.log('symbol:', result)
             });
         await nftContract.methods.name().call({})
             .then((result) => {
-                console.log(result)
+                console.log('name:', result)
             });
     }
 }

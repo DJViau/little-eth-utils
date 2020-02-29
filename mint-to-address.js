@@ -2,16 +2,15 @@ const HDWalletProvider = require("truffle-hdwallet-provider")
 const web3 = require('web3')
 const MNEMONIC = process.env.MNEMONIC
 const INFURA_KEY = process.env.INFURA_KEY
-const BEST_CREATURE_ADDRESS = process.env.BEST_CREATURE_ADDRESS
+const NFT_CONTRACT_ADDRESS = process.env.NFT_CONTRACT_ADDRESS
 const USER_ADDRESS = process.env.USER_ADDRESS
 const NETWORK = process.env.NETWORK
-const NUM_CREATURES = 1
+const DEFAULT_NUM_TOKENS = 1
 
 const RECIPIENT_ADDRESS = process.argv[2]
-const numCreaturesToSend = process.argv[3] || NUM_CREATURES
-// const numCreaturesToSend = 1
+const numTokensToSend = process.argv[3] || DEFAULT_NUM_TOKENS
 
-if (!MNEMONIC || !INFURA_KEY || !RECIPIENT_ADDRESS || !USER_ADDRESS || !NETWORK) {
+if (!MNEMONIC || !INFURA_KEY || !RECIPIENT_ADDRESS || !USER_ADDRESS || !NETWORK || !NFT_CONTRACT_ADDRESS) {
     console.error("Please set a mnemonic, infura key, recipient, user, network, and contract address.")
     return
 }
@@ -37,14 +36,15 @@ async function main() {
         provider
     )
 
-    if (BEST_CREATURE_ADDRESS) {
-        const nftContract = new web3Instance.eth.Contract(NFT_ABI, BEST_CREATURE_ADDRESS, { gasLimit: "1000000" })
+    if (NFT_CONTRACT_ADDRESS) {
+        const nftContract = new web3Instance.eth.Contract(NFT_ABI, NFT_CONTRACT_ADDRESS, { gasLimit: "1000000" })
 
-        // Creatures issued directly to the recipient.
-        if (numCreaturesToSend < 1 || numCreaturesToSend > 10) {
+        // Typo checking.  Remove if you're conscientious.
+        if (numTokensToSend < 1 || numTokensToSend > 10) {
             return
         }
-        for (var i = 0; i < numCreaturesToSend; i++) {
+        // Creatures issued directly to the recipient.
+        for (var i = 0; i < numTokensToSend; i++) {
             const result = await nftContract.methods.mintTo(RECIPIENT_ADDRESS).send({ from: USER_ADDRESS });
             console.log('Minted creature. Transaction: ', `https://etherscan.io/tx/${result.transactionHash}`)
         }

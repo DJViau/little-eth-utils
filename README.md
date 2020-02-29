@@ -29,6 +29,14 @@ This will take a little while to run.  It's OK if you get warnings, but if you g
 
 # How to use
 
+## A preliminary note on environment variables
+
+In addition to what you cloned from github, you'll need another file in your directory to make this all work nicely: a `.env` file.
+
+You can set stuff like `export INFURA_KEY="<your_key_here>"` in it, then enter `. .env` or `source .env` on the command line, and when you run one of the scripts below, the `const INFURA_KEY = process.env.INFURA_KEY` line at the top of the file will grab the value from your `.env` file and set it to the `INFURA_KEY` constant.
+
+It's super reliable and it helps to protect your private info.  If you're not certain whether your environment variables are causing you trouble, just try console logging them.
+
 ## Logging a tokenURI to the console
 
 Source your .env file by entering `. .env`
@@ -37,7 +45,7 @@ Type `node log-token-uri.js <asset_contract_address> <token_id>` and press enter
 
 Example command: `node log-token-uri.js 0x79986af15539de2db9a5086382daeda917a9cf0c 20`
 
-Expected output: https://www.cryptovoxels.com/p/20 
+Expected output: `https://www.cryptovoxels.com/p/20`
 
 Then go to the link that gets logged to see the asset's metadata.
 
@@ -52,16 +60,18 @@ Type `node clear-blocked.js <nonce_of_stuck_tx> <gas_price_in_gwei>` and press e
 
 Example command: `node clear-blocked.js 2434 15`
 
-Expected output: `SENT https://etherscan.io/tx/<transaction_hash>`
+Expected output: `Attempting to replace tx with nonce 1337. Using gas price 13. https://etherscan.io/tx/<tx_hash>`
 
 Then go to the link that gets logged to verify that the replacement transaction has been mined.  The original stuck transaction should show that it was dropped and replaced.
 
 
-## Minting a creature to a user
+## Minting an NFT straight to a user
 
-Source your .env file by entering `. .env`
+Source your .env file by entering `. .env`.  This will only work if you have minting rights on the `NFT_CONTRACT_ADDRESS` contract.
 
-Type `node mint-to-address.js <recipient_address>`
+Type `node mint-to-address.js <recipient_address>` to send one token.
+
+Type `node mint-to-address.js <recipient_address> 5` to send five tokens.
 
 Expected output: `Minted creature. Transaction: https://etherscan.io/tx/<transaction_hash>`
 

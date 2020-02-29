@@ -30,7 +30,11 @@ async function main() {
       gasPrice: web3.utils.toWei(GAS_PRICE_IN_GWEI, 'gwei'),
       value: 0
     });
-    console.log('SENT', `https://etherscan.io/tx/${send.transactionHash}`)
+    console.log(
+      `Attempting to replace tx with nonce ${NONCE}.
+      Using gas price ${GAS_PRICE_IN_GWEI}.
+      https://etherscan.io/tx/${send.transactionHash}`
+    )
 }
 
 main().then(() => process.exit())
